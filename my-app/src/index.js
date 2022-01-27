@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 
 ReactDOM.render(
-  React.createElement('button', {
-    disabled: true
-  }, 'Нажми на меня'),
+  <App/>,
   document.getElementById('root')
 );
