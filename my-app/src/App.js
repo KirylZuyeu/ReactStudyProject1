@@ -19,9 +19,10 @@ function App() {
   return (
     <div className="App">
       <PostItem post={{id: 1, title: 'JavaScript', body: 'Description'}} />
-        {posts.map(post => 
-          <PostItem post={post} key={post.id}/>
-        )}
+      <h1 style={{textAlign: 'center'}}>List of Posts</h1>
+      {posts.map(post => 
+        <PostItem post={post} key={post.id}/>
+      )}
       <Counter/>
       <ClassCounter/>     
     </div>
