@@ -4,6 +4,7 @@ import Counter from "./components/Counter";
 import PostItem from "./components/PostItem";
 import PostList from "./components/PostList";
 import MyButton from "./components/UI/button/MyButton";
+import MyInput from "./components/UI/input/MyInput";
 import './styles/App.css'
 
 function App() {
@@ -17,12 +18,26 @@ function App() {
     {id: 2, title: 'Pyton2', body: 'Description2'},
   ]);
 
+  const [title, setTitle] = useState('');
+
+  const addNewPost = (e) => {
+    e.preventDefault();
+    console.log(title)
+  }
+
   return (
     <div className="App">
       <form>
-        <input type="text" placeholder="Name of the post"/>
-        <input type="text" placeholder="Description of the post"/>
-        <MyButton>Create Post</MyButton>
+        <h1>{title}</h1>
+        <MyInput
+          type="text"
+          placeholder="Name of the post"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        />
+        <MyInput type="text" placeholder="Description of the post"/>
+        <MyButton onClick={addNewPost}>Create Post</MyButton>
+        <MyButton disabled>Disabled</MyButton>
       </form>
       <PostList posts={posts1} title='JavaScript List'/>
       <PostList posts={posts2} title='Pyton List'/>
