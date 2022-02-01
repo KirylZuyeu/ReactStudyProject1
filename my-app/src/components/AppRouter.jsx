@@ -4,6 +4,7 @@ import {privateRoutes, publicRoutes} from "../router/index";
 import {AuthContext} from "../context";
 import Loader from "./UI/Loader/Loader";
 
+
 const AppRouter = () => {
     const {isAuth, isLoading} = useContext(AuthContext);
     console.log(isAuth)
