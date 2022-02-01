@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ClassCounter from "./components/ClassCounter";
 import Counter from "./components/Counter";
 import PostItem from "./components/PostItem";
@@ -18,24 +18,40 @@ function App() {
     {id: 2, title: 'Pyton2', body: 'Description2'},
   ]);
 
-  const [title, setTitle] = useState('');
+  const [post, setPost] = useState({
+    title: '',
+    body: ''
+  })
+  const bodyInputRef = useRef();
 
   const addNewPost = (e) => {
     e.preventDefault();
-    console.log(title)
+    
+    setPosts1([...posts1, {...post, id: Date.now()}])
+    setPost({title: '', body: ''})
   }
 
   return (
     <div className="App">
       <form>
-        <h1>{title}</h1>
         <MyInput
           type="text"
           placeholder="Name of the post"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
+          value={post.title}
+          onChange={e => setPost({...post, title: e.target.value})}
         />
-        <MyInput type="text" placeholder="Description of the post"/>
+        <MyInput
+          type="text"
+          placeholder="Description of the post"
+          value={post.body}
+          onChange={e => setPost({...post, body: e.target.value})}
+        />
+
+        <MyInput
+          type="text"
+          placeholder="Description of the post"
+          ref={bodyInputRef}
+        />
         <MyButton onClick={addNewPost}>Create Post</MyButton>
         <MyButton disabled>Disabled</MyButton>
       </form>
